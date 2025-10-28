@@ -3,8 +3,8 @@
 import { createCards } from './data.js';
 import { renderCards } from './cards.js';
 
-const cards = createCards();
+// Создание массива карточек
+createCards();
+// Отрисовка карточек
+renderCards();
 
-renderCards(cards);
-
-export { cards };
