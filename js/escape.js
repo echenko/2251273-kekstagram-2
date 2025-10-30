@@ -1,16 +1,22 @@
 // Модуль обработки клавиш ESC
 // Импорт
 import { closeBigPicture } from './big-picture.js';
+import { closeForm } from './form.js';
 
 // Константы
 const bigPicture = document.querySelector('.big-picture');
-const bigPictureStaus = bigPicture.classList.contains('hidden');
+const imgUpload = document.querySelector('.img-upload__overlay');
+
 
 // Функция проверки нажатия клавиши ESC
 const checkEscape = (evt) => {
+  const bigPictureStaus = bigPicture.classList.contains('hidden');
+  const formStatus = imgUpload.classList.contains('hidden');
   if (evt.key === 'Escape') {
-    if (bigPictureStaus) {
+    if (!bigPictureStaus) {
       closeBigPicture();
+    } else if (!formStatus) {
+      closeForm();
     }
     document.removeEventListener('keydown', checkEscape);
   }
