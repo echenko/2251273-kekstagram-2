@@ -37,5 +37,6 @@ const offEscapeClick = () => {
   document.removeEventListener('keydown', checkEscape);
 };
 
+//
 // Экспорт
 export { onEscapeClick, offEscapeClick };
