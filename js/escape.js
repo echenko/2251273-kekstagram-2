@@ -7,6 +7,10 @@ import { closeForm } from './form.js';
 const bigPicture = document.querySelector('.big-picture');
 const imgUpload = document.querySelector('.img-upload__overlay');
 
+const form = document.querySelector('.img-upload__form');
+const inputDescription = form.querySelector('.text__description');
+const textHashtags = form.querySelector('.text__hashtags');
+
 
 // Функция проверки нажатия клавиши ESC
 const checkEscape = (evt) => {
@@ -15,10 +19,11 @@ const checkEscape = (evt) => {
   if (evt.key === 'Escape') {
     if (!bigPictureStaus) {
       closeBigPicture();
-    } else if (!formStatus) {
+      document.removeEventListener('keydown', checkEscape);
+    } else if (!formStatus && evt.target !== inputDescription && evt.target !== textHashtags) {
       closeForm();
+      document.removeEventListener('keydown', checkEscape);
     }
-    document.removeEventListener('keydown', checkEscape);
   }
 };
 
